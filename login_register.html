@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce</title>
+    <link rel="stylesheet" href="./login_register.css">
+    <script src="https://kit.fontawesome.com/8eed1c1f47.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="login-signup">
+        <div class="container">
+
+            <!-------------------------- row 1 --------------------------------->
+            <div class="row-1 hidden">              
+                <div class="col-1">
+                    <div class="container-1-1">
+                        <h1>Welcome</h1>
+                        <p>Have No account yet?</p>
+                        <button>Register</button>
+                    </div>
+                </div>
+                
+                <div class="col-2">
+                        
+                <form name="submit-to-google-sheet">
+                        <div class="form-title">Login</div>
+
+                        <div class="username-input-wrapper">
+                            <i id="user-icon" class="fa-solid fa-user"></i>
+                            <div class="username-separator"></div>
+                            <input type="text" name="Username" placeholder="Username" class="name-entry" required>
+                        </div>
+
+                        <div class="password-input-wrapper">
+                            <i id="lock-icon" class="fa-solid fa-lock"></i>
+                            <div class="password-separator"></div>
+                            <input type="text" name="Password" placeholder="Password" class="password-entry">
+                        </div>
+                        
+                        <label class="forgot-password">Forgot Password?</label>
+                        
+                        <button type="submit"  class="login-register">LOG IN</button>
+                        
+                        <label class="different-option">Or log-in with</label>
+                        
+                        <button type="button" class="google-option"><i class="fa-brands fa-google"></i></button>
+                    
+                    </form>
+                </div>  
+            </div>
+            
+            <!-------------------------- row-2 -------------------------------> 
+            <div class="row-2 visible">
+                
+                <div class="col-3">
+                    <div class="container-3-1">
+                        <h1>Welcome Back</h1>
+                        <p>Have an account already?</p>
+                        <button>Login</button>
+                    </div>
+                </div>
+           
+                            
+                <div class="col-4">
+                    <form name="submit-to-google-sheet">
+                        <div class="form-title">Register</div>
+
+                        <div class="username-input-wrapper">
+                            <i id="user-icon" class="fa-solid fa-user"></i>
+                            <div class="username-separator"></div>
+                            <input type="text" name="Username" placeholder="Username" class="name-entry" required>
+                        </div>
+
+                        <div class="email-input-wrapper">
+                            <i id="email-icon" class="fa-solid fa-envelope"></i>
+                            <div class="email-separator"></div>
+                            <input type="email" name="email" placeholder="Email" class="email-entry" required>
+                        </div>
+
+                        <div class="password-input-wrapper">
+                            <i id="lock-icon" class="fa-solid fa-lock"></i>
+                            <div class="password-separator"></div>
+                            <input type="text" name="Password" placeholder="Password" class="password-entry">
+                        </div>
+                        
+                        <button type="submit"  class="login-register">REGISTER</button>
+                        
+                        <label class="different-option">Or register with</label>
+                        
+                        <button type="button" class="google-option"><i class="fa-brands fa-google"></i></button>
+                        
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const row1 = document.querySelector(".row-1");
+            const row2 = document.querySelector(".row-2");
+            const col1 = document.querySelector(".col-1");
+            const col2 = document.querySelector(".col-2");
+            const col3 = document.querySelector(".col-3");
+            const col4 = document.querySelector(".col-4");
+            const registerBtn = document.querySelector(".container-1-1 button");
+            const loginBtn = document.querySelector(".container-3-1 button");
+
+            registerBtn.addEventListener("click", function () {
+                // Slide login columns out
+                col1.classList.add("slide-right-out");
+                col2.classList.add("slide-left-out");
+
+                // After animation, hide row-1 and show row-2
+                setTimeout(() => {
+                    row1.classList.remove("visible");
+                    row1.classList.add("hidden");
+                    row2.classList.remove("hidden");
+                    row2.classList.add("visible");
+
+                    // Slide register columns in
+                    col3.classList.remove("slide-left-out", "slide-right-out");
+                    col4.classList.remove("slide-left-out", "slide-right-out");
+                    col3.classList.add("slide-in-right");
+                    col4.classList.add("slide-in-left");
+                }, 300); // match animation duration
+                });
+
+            loginBtn.addEventListener("click", function () {
+                // Slide register columns out
+                col3.classList.add("slide-left-out");
+                col4.classList.add("slide-right-out");
+
+                setTimeout(() => {
+                    row2.classList.remove("visible");
+                    row2.classList.add("hidden");
+                    row1.classList.remove("hidden");
+                    row1.classList.add("visible");
+
+                    // Slide login columns in
+                    col1.classList.remove("slide-left-out", "slide-right-out");
+                    col2.classList.remove("slide-left-out", "slide-right-out");
+                    col1.classList.add("slide-in-left");
+                    col2.classList.add("slide-in-right");
+                }, 300);
+                });
+        });
+    </script>
+
+</body>
+</html>
